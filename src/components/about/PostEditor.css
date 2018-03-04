@@ -2,6 +2,10 @@
     margin: 1em 18%;
 }
 
+.post-editor-name {
+    margin: 1em 0%;
+}
+
 .post-editor-button    {
     float: right;
     margin-top: 1em;

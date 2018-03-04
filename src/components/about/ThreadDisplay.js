@@ -9,12 +9,14 @@ class ThreadDisplay extends Component{
         this.addPost = this.addPost.bind(this);
     
         this.state = {
-          posts: ['Hello', 'My', 'App']
+          posts: [],
+          postUsers: []
         };
     }
 
-    addPost(newPostBody) {
-        const newState = Object.assign({}, this.state);
+    addPost(newUser, newPostBody) {
+        const newState = Object.assign({}, this.state); // Look into Object.assign()
+        newState.postUsers.push(newUser);
         newState.posts.push(newPostBody);
         this.setState(newState);
       }
@@ -22,16 +24,24 @@ class ThreadDisplay extends Component{
     render() {
         return (
             <div>
-                <h1>Community</h1>
-                <p>Chat with other gamers below!</p>
-                { 
-                    this.state.posts.map((postBody, idx) => {
-                        return  (
-                            <Post key={idx} postBody={postBody}/>
-                        );
-                    })
-                }
-                <PostEditor addPost={this.addPost}/>
+                <div className="panel panel-default thread">
+                    <div className="panel-body">
+                        <h1>Community</h1>
+                        <p>Log in and post below!</p>
+                        { 
+                            this.state.posts.map((postBody, idx) => {
+                                return (
+                                    this.state.postUsers.map((userName, idx2) => {
+                                        return  (
+                                            <Post key={idx} postBody={postBody} userName={userName}/>
+                                        );
+                                    })
+                                );
+                            })
+                        }
+                        <PostEditor addPost={this.addPost}/>
+                    </div>
+                </div>
             </div>
         );
     }

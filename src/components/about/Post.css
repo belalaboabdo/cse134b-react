@@ -1,3 +1,7 @@
 .post-body    {
     margin: 1em 18%;
 }
+
+.post-name {
+    float: left;
+}
