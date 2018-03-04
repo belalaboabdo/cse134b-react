@@ -31,11 +31,7 @@ class ThreadDisplay extends Component{
                         { 
                             this.state.posts.map((postBody, idx) => {
                                 return (
-                                    this.state.postUsers.map((userName, idx2) => {
-                                        return  (
-                                            <Post key={idx} postBody={postBody} userName={userName}/>
-                                        );
-                                    })
+                                    <Post key={idx} userName={this.state.postUsers[idx]} postBody={postBody}/>
                                 );
                             })
                         }
