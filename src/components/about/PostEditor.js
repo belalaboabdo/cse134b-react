@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import "./PostEditor.css";
+import PropTypes from 'prop-types';
 
 class PostEditor extends Component {
     constructor(props)  {
@@ -46,5 +47,9 @@ class PostEditor extends Component {
         );
     }
 }
+
+PostEditor.propTypes = {
+    addPost: PropTypes.func
+  };
 
 export default PostEditor;
