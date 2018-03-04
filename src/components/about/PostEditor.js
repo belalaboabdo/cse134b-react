@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import "./PostEditor.css";
 
 class PostEditor extends Component {
     constructor(props)  {
@@ -10,7 +10,7 @@ class PostEditor extends Component {
         };
 
         this.handlePostEditorInputChange = this.handlePostEditorInputChange.bind(this);
-        this.createPost = this.createPost().bind(this);
+        this.createPost = this.createPost.bind(this);
     }
 
     handlePostEditorInputChange(ev) {

@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import "./Post.css";
 
 const Post = (props) => (
-    <div className="panel panel-default post-body">
+  <div className="panel panel-default post-body">
     <div className="panel-body">
-      {this.props.postBody}
+      {props.postBody}
     </div>
   </div>
 );

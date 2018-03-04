@@ -9,12 +9,12 @@ class ThreadDisplay extends Component{
         this.addPost = this.addPost.bind(this);
     
         this.state = {
-          posts: []
+          posts: ['Hello', 'My', 'App']
         };
     }
 
     addPost(newPostBody) {
-        const newState = Object.assign(newState, this.state);
+        const newState = Object.assign({}, this.state);
         newState.posts.push(newPostBody);
         this.setState(newState);
       }
@@ -27,7 +27,7 @@ class ThreadDisplay extends Component{
                 { 
                     this.state.posts.map((postBody, idx) => {
                         return  (
-                        <Post key={idx} postBody={postBody} />
+                            <Post key={idx} postBody={postBody}/>
                         );
                     })
                 }
