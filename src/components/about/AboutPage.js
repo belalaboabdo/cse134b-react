@@ -1,20 +1,39 @@
 import React from 'react';
+import Post from "./Post.js";
+import PostEditor from "./PostEditor.js";
 import "./AboutPage.css";
 
+
 class AboutPage extends React.Component {
+  constructor(props)  {
+    super(props);
+
+    this.addPost = this.addPost.bind(this);
+
+    this.state = {
+      posts: []
+    };
+  }
+
+  addPost(newPostBody) {
+    const newState = Object.assign(newState, this.state);
+    newState.posts.push(newPostBody);
+    this.setState(newState);
+  }
+
   render() {
     return (
       <div>
         <h1>Community</h1>
         <p>Chat with other gamers below!</p>
-        <div className="panel panel-default">
-        </div>
-        <div className="panel panel-default post-editor">
-          <div className="panel-body">
-            <textarea className="form-control post-editor-input"/>
-            <button className="btn btn-success post-editor-button">Post</button>
-          </div>
-        </div>
+        { 
+          this.state.posts.map((postBody, idx) => {
+            return  (
+              <Post key={idx} postBody={postBody} />
+            );
+          })
+        }
+        <PostEditor addPost={this.addPost} />
       </div>
     );
   }
