@@ -24,7 +24,7 @@ class Post extends Component
 
   addCommentEditor(e) {
     // e.preventDefault();
-    console.log("HI");
+    // console.log("HI");
     const newState = Object.assign({}, this.state); // Look into Object.assign()
     newState.showCommentEditor = true;
     this.setState(newState);
@@ -32,6 +32,7 @@ class Post extends Component
 
   addComment(newUser, newComment)
   {
+    console.log(newComment);
     const newState = Object.assign({}, this.state);
     newState.showCommentEditor = false;
     newState.comments.push(newComment);
@@ -41,26 +42,30 @@ class Post extends Component
   render()
   {
     return(
-      <div className="panel panel-default post-body">
-        <div className="panel-body">
-          <input type="text" className="post-name" value={this.props.userName} readOnly></input>
-          {/* <h3>{this.props.userName}</h3> */}
-          <br></br>
-          <br></br>
-          <div className="panel panel-default body">
-            <div className="panel-body">
-              {this.props.postBody}
+      <div>
+        <div className="panel panel-default post-body">
+          <div className="panel-body">
+            <input type="text" className="post-name" value={this.props.userName} readOnly></input>
+            {/* <h3>{this.props.userName}</h3> */}
+            <br></br>
+            <br></br>
+            <div className="panel panel-default body">
+              <div className="panel-body">
+                {this.props.postBody}
+              </div>
             </div>
+            < button className="btn btn-sm comment-editor-button" onClick={this.addCommentEditor}>Comment</button>
+            <br></br>
+            <br></br>
+            {
+              this.state.comments.map((commentBody, idx) => {
+                return (
+                  <Comment key={idx} userName={this.state.commentUsers[idx]} commentBody={commentBody}/>
+                );
+              })
+            }
+            {this.state.showCommentEditor && <CommentEditor addComment={this.addComment}/>}
           </div>
-          < button className="btn btn-sm comment-editor-button" onClick={this.addCommentEditor}>Comment</button>
-          {this.state.showCommentEditor && <CommentEditor addComment={this.addComment}/>}
-          {
-            this.state.comments.map((commentBody, idx) => {
-              return (
-                <Comment key={idx} userName={this.state.commentUsers[idx]} commentBody={commentBody}/>
-              );
-            })
-          }
         </div>
       </div>
     );
