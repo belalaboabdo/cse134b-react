@@ -9,8 +9,8 @@ class ThreadDisplay extends Component{
         this.addPost = this.addPost.bind(this);
     
         this.state = {
-          posts: [],
-          postUsers: []
+          posts: ["first", "second", "second"],
+          postUsers: ["Belal", "Najeeb", "David"]
         };
     }
 
@@ -26,9 +26,9 @@ class ThreadDisplay extends Component{
             <div>
                 <div className="panel panel-default thread">
                     <div className="panel-body">
-                        <h1>Community</h1>
-                        <p>Log in and post below!</p>
-                        { 
+                        <h1>FIRST LAST</h1>
+                        <p>Come check out my page below!</p>
+                        {
                             this.state.posts.map((postBody, idx) => {
                                 return (
                                     <Post key={idx} userName={this.state.postUsers[idx]} postBody={postBody}/>
